@@ -36,6 +36,32 @@ class ByteOfChar {
     }
 
     int evaluate () {
+      /**
+        * PSEUDOCODE:
+        * int evaluate
+        *   pos = 7, upL = lowL = 0           // Algoritm can be generalaized to n bits by setting pos = n
+        *   *from MSB to LSB*
+        *   while byte[pos] != 1 && pos >= 0
+        *     pos--
+        *   if pos < 0    // case: 00000000
+        *     return 0
+        *   else
+        *     upL = 2^(pos+1) - 1
+        *     lowL = 2^pos
+        *     pos--
+        *   while pos >= 0
+        *     if byte[pos] == 0
+        *       upL -= 2^pos
+        *     else
+        *       lowL += 2^pos
+        *     pos--
+        *   if upL == lowL
+        *     return upL
+        *   else
+        *     return ERR
+        * end
+      */
+
       int pos = 7, upperLimit = 0, lowerLimit = 0;
 
       while (this->byteArray[pos] != '1' && pos >= 0)           // Scroll the byte (from MSB to LSB) yo the first bit == 1
