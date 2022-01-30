@@ -6,7 +6,7 @@ class ByteOfChar {
   /**
     * function return true if there're no errors.
     * function return false if an error occurred.
-  */
+    */
   private:
 
     char byteArray[7];    /* A byte (of char) written FROM RIGHT to LEFT -> MSB-?-?-?-?-?-?-LSB = byteArray[7]-?-?-?-?-?-?-byteArray[0] */
@@ -64,9 +64,9 @@ class ByteOfChar {
 
       int pos = 7, upperLimit = 0, lowerLimit = 0;
 
-      while (this->byteArray[pos] != '1' && pos >= 0)           // Scroll the byte (from MSB to LSB) yo the first bit == 1
+      while (this->byteArray[pos] != '1' && pos >= 0)           /* Scroll the byte (from MSB to LSB) yo the first bit == 1 */
         pos--;
-      if (pos < 0) return 0;                                    // case: byte := 00000000
+      if (pos < 0) return 0;                                    /* case: byte := 00000000 */
 
       upperLimit = pow (2,pos+1) - 1;
       lowerLimit = pow (2,pos);
