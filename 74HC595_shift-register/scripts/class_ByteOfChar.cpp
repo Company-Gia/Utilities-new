@@ -4,8 +4,8 @@ using namespace std;
 
 class ByteOfChar {
   /**
-    * function return true if there're no errors.
-    * function return false if an error occurred.
+    * Functions return true if there're no errors.
+    * Functions return false if an error occurred.
     */
   private:
 

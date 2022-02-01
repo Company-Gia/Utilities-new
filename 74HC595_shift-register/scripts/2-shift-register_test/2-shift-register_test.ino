@@ -1,25 +1,31 @@
+#include "class_ByteOfChar.h"
+
 #define Data 11
 #define Latch 12
 #define Clock 13
 
 void setup(){
+  Serial.begin(9600);  
   pinMode(Data, OUTPUT);
   pinMode(Latch, OUTPUT);
   pinMode(Clock, OUTPUT);
 }
 
-byte register_1 = 11000000;   /* x_7..x_0 */
-byte register_2 = 11100000;   /* y_7..y_0 */
+//byte register_1 = 11000000;   /* x_7..x_0 */
+//byte register_2 = 11100000;   /* y_7..y_0 */
 
 // 00110011    54
 // 00110010    53
 
 // unsigned int
 
-
-
 void loop(){
-  writeRegister(0xff);
+  writeRegister(0x00);
+
+  ByteOfChar tmp = ByteOfChar('1','1','1','1','1','1','1','1');
+  Serial.println(tmp.get_n());
+  Serial.println("BBB");
+  
   //animation1(50);
   //animation2(50);
 }
