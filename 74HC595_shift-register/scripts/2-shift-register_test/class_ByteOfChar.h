@@ -17,7 +17,7 @@ class ByteOfChar {
 
     bool check_value (char value);
 
-    int pow (int base, int exponent);
+    int myPow (int base, int exponent);
 
     int evaluate ();
 
@@ -51,7 +51,7 @@ bool ByteOfChar::check_value (char value) {
     return false;
 }
 
-int ByteOfChar::pow (int base, int exponent) {
+int ByteOfChar::myPow (int base, int exponent) {
   int res = 1;
   while (exponent > 0) {
     res *= base;
@@ -94,16 +94,19 @@ int ByteOfChar::evaluate () {
   if (pos < 0)                                              /* case: byte := 00000000 */
     return 0;
 
-  upperLimit = pow (2, pos + 1) - 1;
-  lowerLimit = pow (2, pos);
+  upperLimit = myPow (2, pos + 1) - 1;
+  lowerLimit = myPow (2, pos);
   pos--;
 
   while (pos >= 0) {
-    //cout << endl << "pos=" << pos << " ; up="<< upperLimit << " ; lw=" << lowerLimit << " ; bitPos=" << this->byteArray[pos];
+    Serial.println("pos=" + pos );
+    Serial.println("up=" + upperLimit);
+    Serial.println("lw=" + lowerLimit);
+    Serial.println("bitPos=" + this->byteArray[pos]);
     if (this->byteArray[pos] == '0')
-      upperLimit -= pow (2,pos);
+      upperLimit -= myPow (2,pos);
     else
-      lowerLimit += pow (2,pos);
+      lowerLimit += myPow (2,pos);
     pos--;
   }
   if (upperLimit == lowerLimit)
