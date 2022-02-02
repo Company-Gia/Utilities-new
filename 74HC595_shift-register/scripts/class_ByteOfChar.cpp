@@ -66,10 +66,11 @@ class ByteOfChar {
 
       while (this->byteArray[pos] != '1' && pos >= 0)           /* Scroll the byte (from MSB to LSB) yo the first bit == 1 */
         pos--;
-      if (pos < 0) return 0;                                    /* case: byte := 00000000 */
+      if (pos < 0)                                              /* case: byte := 00000000 */
+        return 0;
 
-      upperLimit = pow (2,pos+1) - 1;
-      lowerLimit = pow (2,pos);
+      upperLimit = pow (2, pos + 1) - 1;
+      lowerLimit = pow (2, pos);
       pos--;
 
       while (pos >= 0) {
@@ -80,8 +81,10 @@ class ByteOfChar {
           lowerLimit += pow (2,pos);
         pos--;
       }
-      if (upperLimit == lowerLimit) return upperLimit;
-      else return 0;
+      if (upperLimit == lowerLimit)
+        return upperLimit;
+      else
+        return 0;
     }
 
   protected:
@@ -105,7 +108,8 @@ class ByteOfChar {
         this->byteArray[6] = bit6;
         this->byteArray[7] = bit7;
         this->n = evaluate();
-      } else ByteOfChar(); 
+      } else
+        ByteOfChar(); 
     }
 
     unsigned int get_n () { return this->n; }
@@ -115,7 +119,8 @@ class ByteOfChar {
         this->byteArray[pos] = value;
         this->n = evaluate();
         return true;
-      } else return false;
+      } else
+        return false;
     }
 
     bool negate_value (int pos) {
@@ -128,14 +133,16 @@ class ByteOfChar {
           return false;
         this->n = evaluate();
         return true;
-      } else return false;
+      } else
+        return false;
     }
 };
 
 int main () {
 
-  ByteOfChar tmp = ByteOfChar('1','1','1','1','1','1','1','1');
-  cout << endl << tmp.get_n();
+  ByteOfChar tmp1 = ByteOfChar('0','1','1','1','1','1','1','1');
+  ByteOfChar tmp2 = ByteOfChar('1','1','1','1','1','1','1','1');
+  cout << endl << tmp1.get_n() << endl << tmp2.get_n();
 
   return 0;
 }
