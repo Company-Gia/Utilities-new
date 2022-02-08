@@ -22,9 +22,10 @@ void setup(){
 void loop(){
   writeRegister(0x00);
 
-  ByteOfChar tmp = ByteOfChar('1','1','1','1','1','1','1','1');
+  //ByteOfChar tmp = ByteOfChar('0','1','1','1','1','1','1','0');
+  //ByteOfChar tmp = ByteOfChar('0','1','1','1','1','1','1','1');
+  ByteOfChar tmp = ByteOfChar('1','1','1','1','1','1','1','1','0');
   Serial.println(tmp.get_n());
-  Serial.println("BBB");
   
   //animation1(50);
   //animation2(50);
