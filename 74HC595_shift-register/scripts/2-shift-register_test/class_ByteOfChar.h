@@ -1,6 +1,8 @@
 #ifndef class_ByteOfChar
 #define class_ByteOfChar
 
+#define ARRAY_SIZE 8
+
 //using namespace std;
 
 class ByteOfChar {
@@ -10,7 +12,7 @@ class ByteOfChar {
     */
   private:
 
-    char byteArray[7];    /* A byte (of char) written FROM RIGHT to LEFT -> MSB-?-?-?-?-?-?-LSB = byteArray[7]-?-?-?-?-?-?-byteArray[0] */
+    char byteArray[ARRAY_SIZE];    /* A byte (of char) written FROM RIGHT to LEFT -> MSB-?-?-?-?-?-?-LSB = byteArray[7]-?-?-?-?-?-?-byteArray[0] */
     unsigned int n;
 
     bool check_pos (int pos);
@@ -26,7 +28,7 @@ class ByteOfChar {
   public:
     ByteOfChar ();
 
-    ByteOfChar (char bit7, char bit6, char bit5, char bit4, char bit3, char bit2, char bit1, char bit0);
+    ByteOfChar (char bit8, char bit7, char bit6, char bit5, char bit4, char bit3, char bit2, char bit1, char bit0);
 
     unsigned int get_n ();
 
@@ -38,7 +40,7 @@ class ByteOfChar {
 
 /* Private methods */
 bool ByteOfChar::check_pos (int pos) {
-  if (pos <= 7 && pos >= 0)
+  if (pos <= ARRAY_SIZE && pos >= 0)
     return true;
   else
     return false;
@@ -87,7 +89,7 @@ int ByteOfChar::evaluate () {
     * end
   */
 
-  int pos = 7, upperLimit = 0, lowerLimit = 0;
+  int pos = ARRAY_SIZE, upperLimit = 0, lowerLimit = 0;
 
   while (this->byteArray[pos] != '1' && pos >= 0)           /* Scroll the byte (from MSB to LSB) yo the first bit == 1 */
     pos--;
@@ -99,10 +101,10 @@ int ByteOfChar::evaluate () {
   pos--;
 
   while (pos >= 0) {
-    Serial.println("pos=" + pos );
-    Serial.println("up=" + upperLimit);
-    Serial.println("lw=" + lowerLimit);
-    Serial.println("bitPos=" + this->byteArray[pos]);
+    //Serial.println("pos=" + pos );
+    //Serial.println("up=" + upperLimit);
+    //Serial.println("lw=" + lowerLimit);
+    //Serial.println("bitPos=" + this->byteArray[pos]);
     if (this->byteArray[pos] == '0')
       upperLimit -= myPow (2,pos);
     else
@@ -125,9 +127,10 @@ ByteOfChar::ByteOfChar () {
   this->n = 0;
 }
 
-ByteOfChar::ByteOfChar (char bit7, char bit6, char bit5, char bit4, char bit3, char bit2, char bit1, char bit0) {
+ByteOfChar::ByteOfChar (char bit8, char bit7, char bit6, char bit5, char bit4, char bit3, char bit2, char bit1, char bit0) {
   if (check_value(bit0) && check_value(bit1) && check_value(bit2) && check_value(bit3) &&
-      check_value(bit4) && check_value(bit5) && check_value(bit6) && check_value(bit7)) {
+      check_value(bit4) && check_value(bit5) && check_value(bit6) && check_value(bit7) &&
+      check_value(bit8)) {
     this->byteArray[0] = bit0;
     this->byteArray[1] = bit1;
     this->byteArray[2] = bit2;
@@ -136,6 +139,7 @@ ByteOfChar::ByteOfChar (char bit7, char bit6, char bit5, char bit4, char bit3, c
     this->byteArray[5] = bit5;
     this->byteArray[6] = bit6;
     this->byteArray[7] = bit7;
+    this->byteArray[8] = bit8;
     this->n = evaluate();
   } else
     ByteOfChar();
