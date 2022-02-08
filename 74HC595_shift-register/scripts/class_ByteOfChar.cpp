@@ -140,9 +140,16 @@ class ByteOfChar {
 
 int main () {
 
-  ByteOfChar tmp1 = ByteOfChar('0','1','1','1','1','1','1','1');
-  ByteOfChar tmp2 = ByteOfChar('1','1','1','1','1','1','1','1');
-  cout << endl << tmp1.get_n() << endl << tmp2.get_n();
+  ByteOfChar tmp;
+  tmp = ByteOfChar('0','1','1','1','1','1','1','1');  // 127
+  cout << tmp.get_n() << endl;
+
+  tmp = ByteOfChar('0','1','1','1','1','1','1','0');  // 126
+  cout << tmp.get_n() << endl;
+
+  tmp = ByteOfChar('0','1','0','0','1','0','1','1');  // 75
+  cout << tmp.get_n() << endl;
+
 
   return 0;
 }
