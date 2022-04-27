@@ -1,7 +1,7 @@
 /**
  * @file class_ByteOfChar.h
- * @author sapore_di_Marte_65
- * @brief A handler (for newbie) of n shif-registers connected in series.
+ * @author sapore_di_Marte_63
+ * @brief A handler (for newbie) for n shif-registers connected in series.
  * @version 0.1
  * @date 2022-04-26
  * 
