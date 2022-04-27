@@ -1,9 +1,18 @@
+/**
+ * @file class_ByteOfChar.h
+ * @author sapore_di_Marte_65
+ * @brief A handler (for newbie) of n shif-registers connected in series.
+ * @version 0.1
+ * @date 2022-04-26
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef class_ByteOfChar
 #define class_ByteOfChar
 
-#define ARRAY_SIZE 8
-
-//using namespace std;
+#define BYTE_SIZE 8
 
 class ByteOfChar {
   /**
@@ -12,7 +21,7 @@ class ByteOfChar {
     */
   private:
 
-    char byteArray[ARRAY_SIZE];    /* A byte (of char) written FROM RIGHT to LEFT -> MSB-?-?-?-?-?-?-LSB = byteArray[7]-?-?-?-?-?-?-byteArray[0] */
+    char byteArray[BYTE_SIZE];    /* A byte (of char) written FROM RIGHT to LEFT -> MSB-?-?-?-?-?-?-LSB = byteArray[7]-?-?-?-?-?-?-byteArray[0] */
     unsigned int n;
 
     bool check_pos (int pos);
@@ -40,7 +49,7 @@ class ByteOfChar {
 
 /* Private methods */
 bool ByteOfChar::check_pos (int pos) {
-  if (pos <= ARRAY_SIZE && pos >= 0)
+  if (pos <= BYTE_SIZE && pos >= 0)
     return true;
   else
     return false;
@@ -89,7 +98,7 @@ int ByteOfChar::evaluate () {
     * end
   */
 
-  int pos = ARRAY_SIZE, upperLimit = 0, lowerLimit = 0;
+  int pos = BYTE_SIZE, upperLimit = 0, lowerLimit = 0;
 
   while (this->byteArray[pos] != '1' && pos >= 0)           /* Scroll the byte (from MSB to LSB) yo the first bit == 1 */
     pos--;

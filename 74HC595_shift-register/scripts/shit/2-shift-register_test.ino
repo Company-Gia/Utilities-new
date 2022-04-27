@@ -17,8 +17,6 @@ void setup(){
 // 00110011    54
 // 00110010    53
 
-// unsigned int
-
 void loop(){
   writeRegister(0x00);
 
