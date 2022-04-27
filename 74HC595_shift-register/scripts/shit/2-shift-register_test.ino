@@ -36,7 +36,7 @@ void writeRegister(unsigned int value){
    * pos:   y_7....y_0   x_7....x_0
    * 
    * MSBFIRST -> La macchina legge (da SX verso DX): y_7..y_0x_7..x_0
-   * LSBFIRST -> La macchina legge (da SX versi DX): x_0..x_7y_0..y_7
+   * LSBFIRST -> La macchina legge (da SX verso DX): x_0..x_7y_0..y_7
   */
   digitalWrite(Latch, LOW);                     // Si abilita la scrittura sugli shift register
   shiftOut(Data, Clock, MSBFIRST, value >> 8);
